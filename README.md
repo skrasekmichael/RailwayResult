@@ -51,7 +51,7 @@ public Result SetMemberRole(Guid initiatorId, Guid memberId, TeamRole newRole)
       return Errors.ForbiddenToUpdateTeamRoles;
 
    var member = GetTeamMember(memberId);
-   if (membe is null)
+   if (member is null)
       return Errors.MemberNotFound;
 
    if (member.Role.IsOwner())
