@@ -32,6 +32,15 @@ public sealed class Result<TValue>
 		return IsSuccess ? successMap(_value!) : failureMap(_error!);
 	}
 
+	public override string ToString()
+	{
+		return IsSuccess switch
+		{
+			true => "Result SUCCESS" + _value!.ToString(),
+			false => "Result FAILURE " + _error!.ToString()
+		};
+	}
+
 	public static Result<TValue> Success(TValue value) => new(value);
 
 	public static implicit operator Result<TValue>(TValue? value) => new(value);

@@ -22,6 +22,15 @@ public sealed class Result
 		_error = null;
 	}
 
+	public override string ToString()
+	{
+		return IsSuccess switch
+		{
+			true => "Result SUCCESS",
+			false => "Result FAILURE " + _error!.ToString()
+		};
+	}
+
 	public static readonly Result Success = new();
 
 	public static implicit operator Result(Error error) => new(error);
