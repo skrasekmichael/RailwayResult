@@ -31,6 +31,7 @@ jobs:
 
     - name: Publish NuGet packages
       run: |
-        foreach ($file in (Get-ChildItem nuget -Include *.nupkg)) {
-            dotnet nuget push $file --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        Get-ChildItem nuget -Filter *.nupkg | % {
+            dotnet nuget push $_.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
         }
+      shell: pwsh
