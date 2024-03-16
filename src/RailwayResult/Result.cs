@@ -7,10 +7,10 @@ public sealed class Result
 	public bool IsSuccess { get; }
 	public bool IsFailure => !IsSuccess;
 
-	private readonly ErrorBase? _error = null;
-	public ErrorBase Error => IsFailure ? _error! : throw new AccessingErrorOfSuccessResultException();
+	private readonly Error? _error = null;
+	public Error Error => IsFailure ? _error! : throw new AccessingErrorOfSuccessResultException();
 
-	public Result(ErrorBase error)
+	public Result(Error error)
 	{
 		IsSuccess = false;
 		_error = error;
@@ -24,5 +24,5 @@ public sealed class Result
 
 	public static readonly Result Success = new();
 
-	public static implicit operator Result(ErrorBase error) => new(error);
+	public static implicit operator Result(Error error) => new(error);
 }

@@ -6,7 +6,7 @@ public sealed class ResultTests
 	public void AccessingValueOfFailureResult_Should_ResultInException()
 	{
 		//arrange
-		Result<string> failedResult = GenericError.New("Error");
+		Result<string> failedResult = new GenericError("Tests.Error", "Error");
 
 		//act
 		var accessor = () => failedResult.Value;

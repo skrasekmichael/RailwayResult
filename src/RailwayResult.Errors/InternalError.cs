@@ -1,3 +1,3 @@
 ﻿namespace RailwayResult.Errors;
 
-public sealed record InternalError : Error<InternalError>;
+public sealed record InternalError(string Key, string Message) : Error(Key, Message);

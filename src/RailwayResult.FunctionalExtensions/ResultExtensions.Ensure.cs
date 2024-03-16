@@ -2,7 +2,7 @@
 
 public static partial class ResultExtensions
 {
-	public static Result<TObj> Ensure<TObj, TError>(this TObj obj, Rule<TObj> rule, TError error) where TError : ErrorBase
+	public static Result<TObj> Ensure<TObj, TError>(this TObj obj, Rule<TObj> rule, TError error) where TError : Error
 	{
 		if (!rule(obj))
 			return error;
@@ -10,7 +10,7 @@ public static partial class ResultExtensions
 		return obj;
 	}
 
-	public static async Task<Result<TObj>> Ensure<TObj, TError>(this Task<TObj> objTask, Rule<TObj> rule, TError error) where TError : ErrorBase
+	public static async Task<Result<TObj>> Ensure<TObj, TError>(this Task<TObj> objTask, Rule<TObj> rule, TError error) where TError : Error
 	{
 		var obj = await objTask;
 		return obj.Ensure(rule, error);
@@ -34,7 +34,7 @@ public static partial class ResultExtensions
 		return obj.Ensure(rules);
 	}
 
-	public static Result<TValue> Ensure<TValue, TError>(this Result<TValue> result, Rule<TValue> rule, TError error) where TError : ErrorBase
+	public static Result<TValue> Ensure<TValue, TError>(this Result<TValue> result, Rule<TValue> rule, TError error) where TError : Error
 	{
 		if (result.IsFailure)
 			return result;
@@ -45,7 +45,7 @@ public static partial class ResultExtensions
 		return result;
 	}
 
-	public static async Task<Result<TValue>> Ensure<TValue, TError>(this Task<Result<TValue>> selfTask, Rule<TValue> rule, TError error) where TError : ErrorBase
+	public static async Task<Result<TValue>> Ensure<TValue, TError>(this Task<Result<TValue>> selfTask, Rule<TValue> rule, TError error) where TError : Error
 	{
 		var self = await selfTask;
 		return self.Ensure(rule, error);
@@ -72,7 +72,7 @@ public static partial class ResultExtensions
 		return result.Ensure(rules);
 	}
 
-	public static Result<(TFirst, TSecond)> Ensure<TFirst, TSecond, TError>(this Result<(TFirst, TSecond)> result, Rule<TFirst, TSecond> rule, TError error) where TError : ErrorBase
+	public static Result<(TFirst, TSecond)> Ensure<TFirst, TSecond, TError>(this Result<(TFirst, TSecond)> result, Rule<TFirst, TSecond> rule, TError error) where TError : Error
 	{
 		if (result.IsFailure)
 			return result;
@@ -83,7 +83,7 @@ public static partial class ResultExtensions
 		return result;
 	}
 
-	public static async Task<Result<(TFirst, TSecond)>> Ensure<TFirst, TSecond, TError>(this Task<Result<(TFirst, TSecond)>> resultTask, Rule<TFirst, TSecond> rule, TError error) where TError : ErrorBase
+	public static async Task<Result<(TFirst, TSecond)>> Ensure<TFirst, TSecond, TError>(this Task<Result<(TFirst, TSecond)>> resultTask, Rule<TFirst, TSecond> rule, TError error) where TError : Error
 	{
 		var result = await resultTask;
 		return result.Ensure(rule, error);

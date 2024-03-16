@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+    <Authors>Michael Škrášek</Authors>
+    <Copyright>Copyright Michael Škrášek</Copyright>
   </PropertyGroup>
 </Project>
-

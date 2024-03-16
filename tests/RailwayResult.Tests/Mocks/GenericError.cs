@@ -1,5 +1,3 @@
-﻿using RailwayResult;
+﻿namespace RailwayResults.Tests.Mocks;
 
-namespace RailwayResults.Tests.Mocks;
-
-public sealed record GenericError : Error<GenericError>;
+public sealed record GenericError(string Key, string Message) : Error(Key, Message);

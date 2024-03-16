@@ -1,5 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <Title>Railway Oriented Extension Methods</Title>
+    <Version>1.0.0-alpha</Version>
+    <PackageId>Skrasek.RailwayResult.FunctionalExtensions</PackageId>
+    <Description>Functional extension methods for Railway Result leveraging railway-oriented programming</Description>
+    <PackageTags>result;railway-result;result-pattern;railway-oriented-programming;c#</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Deterministic>true</Deterministic>
+    <RootNamespace>RailwayResult</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\RailwayResult.Errors\RailwayResult.Errors.csproj" />
     <ProjectReference Include="..\RailwayResult\RailwayResult.csproj" />
