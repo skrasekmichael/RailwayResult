@@ -1,4 +1,4 @@
-﻿namespace RailwayResult.FunctionExtensions;
+﻿namespace RailwayResult.FunctionalExtensions;
 
 public delegate bool Rule<in T>(T value);
 

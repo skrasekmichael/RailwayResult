@@ -1,8 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\RailwayResult.Errors\RailwayResult.Errors.csproj" />
-    <ProjectReference Include="..\src\RailwayResult\RailwayResult.csproj" />
-  </ItemGroup>
-
-</Project>

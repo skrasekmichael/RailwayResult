@@ -1,4 +1,4 @@
-﻿namespace RailwayResult.FunctionExtensions;
+﻿namespace RailwayResult.FunctionalExtensions;
 
 public static partial class ResultExtensions
 {
