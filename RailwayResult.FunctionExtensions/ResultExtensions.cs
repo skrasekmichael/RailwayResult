@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionExtensions;
 
-public static class ResultExtensions
+public static partial class ResultExtensions
 {
 
 }
