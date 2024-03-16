@@ -1,3 +1,3 @@
 ﻿namespace RailwayResult.Errors;
 
-public sealed record AuthorizationError : Error<AuthorizationError>;
+public sealed record AuthorizationError(string Key, string Message) : Error(Key, Message);

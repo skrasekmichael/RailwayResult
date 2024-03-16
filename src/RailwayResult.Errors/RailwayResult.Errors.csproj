@@ -1,5 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <Title>Railway Result Errors</Title>
+    <Version>1.0.0-alpha</Version>
+    <PackageId>Skrasek.RailwayResult.Errors</PackageId>
+    <Description>Default errory types for Railway Result</Description>
+    <PackageTags>result;railway-result;result-pattern;error;c#</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Deterministic>true</Deterministic>
+    <RootNamespace>RailwayResult</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\RailwayResult\RailwayResult.csproj" />
   </ItemGroup>

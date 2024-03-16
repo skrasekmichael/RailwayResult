@@ -7,9 +7,9 @@ public delegate bool Rule<in TFirst, in TSecond>(TFirst first, TSecond second);
 public readonly struct RuleWithError<T> : IRuleWithError<T>
 {
 	public Rule<T> Condition { get; }
-	public ErrorBase Error { get; }
+	public Error Error { get; }
 
-	public RuleWithError(Rule<T> condition, ErrorBase error)
+	public RuleWithError(Rule<T> condition, Error error)
 	{
 		Condition = condition;
 		Error = error;
