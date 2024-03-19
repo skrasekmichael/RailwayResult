@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RailwayResult.Errors\RailwayResult.Errors.csproj" />
     <ProjectReference Include="..\RailwayResult\RailwayResult.csproj" />
   </ItemGroup>
 
