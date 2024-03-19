@@ -7,28 +7,28 @@ public sealed class TheoryData_Obj_Ensure : TheoryData<Func<O, R1>, O, R1>
 		//ensure should pass
 		Add(
 			result => result.Ensure(Rules.IsNullOrWhiteSpaceRule, Errors.ErrorA),
-			string.Empty,
-			string.Empty
+			O.Empty,
+			O.Empty
 		);
 
 		//ensure should fail
 		Add(
 			result => result.Ensure(s => !Rules.IsNullOrWhiteSpaceRule(s), Errors.ErrorA),
-			string.Empty,
+			O.Empty,
 			Errors.ErrorA
 		);
 
 		//all rules should pass
 		Add(
 			result => result.Ensure(Rules.IsEmpty, Rules.IsNullOrWhiteSpace, Rules.CountIs(0)),
-			string.Empty,
-			string.Empty
+			O.Empty,
+			O.Empty
 		);
 
 		//last rule should fail
 		Add(
 			result => result.Ensure(Rules.IsEmpty, Rules.IsNullOrWhiteSpace, Rules.CountIs(1)),
-			string.Empty,
+			O.Empty,
 			Rules.CountIs(1).Error
 		);
 	}
