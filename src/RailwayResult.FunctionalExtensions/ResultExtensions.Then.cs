@@ -127,46 +127,4 @@ public static partial class ResultExtensions
 		var result = await resultTask;
 		return result.Then(mapper);
 	}
-
-	public static async Task<Result<TOut>> ThenAsync<TValue, TOut>(this Result<TValue> result, Func<TValue, Task<TOut>> asyncMapper)
-	{
-		if (result.IsFailure)
-			return result.Error;
-
-		return await asyncMapper(result.Value);
-	}
-
-	public static async Task<Result<TOut>> ThenAsync<TValue, TOut>(this Task<Result<TValue>> resultTask, Func<TValue, Task<TOut>> asyncMapper)
-	{
-		var result = await resultTask;
-		return await result.ThenAsync(asyncMapper);
-	}
-
-	public static async Task<Result<TOut>> ThenAsync<TFirst, TSecond, TOut>(this Result<(TFirst, TSecond)> result, Func<TFirst, TSecond, Task<TOut>> asyncMapper)
-	{
-		if (result.IsFailure)
-			return result.Error;
-
-		return await asyncMapper(result.Value.Item1, result.Value.Item2);
-	}
-
-	public static async Task<Result<TOut>> ThenAsync<TFirst, TSecond, TOut>(this Task<Result<(TFirst, TSecond)>> resultTask, Func<TFirst, TSecond, Task<TOut>> asyncMapper)
-	{
-		var result = await resultTask;
-		return await result.ThenAsync(asyncMapper);
-	}
-
-	public static async Task<Result<TOut>> ThenAsync<TFirst, TSecond, TOut>(this Result<(TFirst, TSecond)> result, Func<TFirst, TSecond, Task<Result<TOut>>> asyncMapper)
-	{
-		if (result.IsFailure)
-			return result.Error;
-
-		return await asyncMapper(result.Value.Item1, result.Value.Item2);
-	}
-
-	public static async Task<Result<TOut>> ThenAsync<TFirst, TSecond, TOut>(this Task<Result<(TFirst, TSecond)>> resultTask, Func<TFirst, TSecond, Task<Result<TOut>>> asyncMapper)
-	{
-		var self = await resultTask;
-		return await self.ThenAsync(asyncMapper);
-	}
 }

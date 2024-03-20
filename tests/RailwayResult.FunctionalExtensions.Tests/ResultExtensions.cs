@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests;
 
-public static class ComparerExtension
+public static class ResultExtensions
 {
 	public static void ShouldBe(this Result self, Result expected)
 	{
@@ -28,4 +28,8 @@ public static class ComparerExtension
 			self.Error.Should().BeEquivalentTo(expected.Error);
 		}
 	}
+
+	public static Task<Result> ToResultTask(this Result result) => Task.FromResult(result);
+
+	public static Task<Result<T>> ToResultTask<T>(this Result<T> result) => Task.FromResult(result);
 }

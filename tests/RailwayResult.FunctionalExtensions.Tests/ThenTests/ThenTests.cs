@@ -1,6 +1,4 @@
-﻿global using RC = RailwayResult.Result<string?>;
-
-namespace RailwayResult.FunctionalExtensions.Tests.ThenTests;
+﻿namespace RailwayResult.FunctionalExtensions.Tests.ThenTests;
 
 public sealed class ThenTests
 {
