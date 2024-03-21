@@ -22,6 +22,11 @@ public sealed class Result
 		_error = null;
 	}
 
+	public TOut Match<TOut>(Func<TOut> onSuccessMap, Func<Error, TOut> onFailureMap)
+	{
+		return IsSuccess ? onSuccessMap() : onFailureMap(_error!);
+	}
+
 	public override string ToString()
 	{
 		return IsSuccess switch
