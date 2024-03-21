@@ -27,9 +27,9 @@ public sealed class Result<TValue>
 		_value = value;
 	}
 
-	public TOut Match<TOut>(Func<TValue, TOut> successMap, Func<Error, TOut> failureMap)
+	public TOut Match<TOut>(Func<TValue, TOut> onSuccessMap, Func<Error, TOut> onFailureMap)
 	{
-		return IsSuccess ? successMap(_value!) : failureMap(_error!);
+		return IsSuccess ? onSuccessMap(_value!) : onFailureMap(_error!);
 	}
 
 	public override string ToString()
