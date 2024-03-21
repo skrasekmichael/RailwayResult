@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.Tests;
 
-public sealed class Result_AcessingValueAndError_Tests
+public sealed class Result_AccessingValueAndError_Tests
 {
 	[Fact]
 	public void AccessingErrorOfSuccessResult_Should_ResultInException()
