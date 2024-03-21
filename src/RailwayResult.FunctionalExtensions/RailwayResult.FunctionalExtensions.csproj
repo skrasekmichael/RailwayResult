@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <Title>Railway Oriented Extension Methods</Title>
-    <Version>1.0.1</Version>
     <PackageId>Skrasek.RailwayResult.FunctionalExtensions</PackageId>
     <Description>Functional extension methods for Railway Result leveraging railway-oriented programming</Description>
     <PackageTags>result;railway-result;result-pattern;railway-oriented-programming;c#</PackageTags>
