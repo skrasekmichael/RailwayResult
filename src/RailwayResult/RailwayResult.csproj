@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <Title>Railway Result</Title>
-    <Version>1.0.1</Version>
     <PackageId>Skrasek.RailwayResult</PackageId>
     <Description>Simple extensible result pattern for .NET</Description>
     <PackageTags>result;railway-result;result-pattern;c#</PackageTags>
