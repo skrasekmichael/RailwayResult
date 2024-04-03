@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.ThenTests;
 
-public sealed class TheoryData_TaskOfR2_Then_TaskOfRC : TheoryData<Func<Task<R2>, Task<RC>>, R2, RC>
+public sealed class TheoryData_TaskOfR2_Then_TaskOfRC : TheoryData<Func<Task<R2>, Task<RC>>, R2, RC?>
 {
 	public TheoryData_TaskOfR2_Then_TaskOfRC()
 	{
@@ -54,6 +54,34 @@ public sealed class TheoryData_TaskOfR2_Then_TaskOfRC : TheoryData<Func<Task<R2>
 			result => result.Then<O, O, string?>((_, _) => Errors.ErrorC)!,
 			(O.A, O.B),
 			Errors.ErrorC
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.Then((_, _) => BasicException.Throw<string?>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.Then((_, _) => BasicException.Throw<string?>()),
+			(O.A, O.B),
+			null
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.Then((_, _) => BasicException.Throw<RC>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.Then((_, _) => BasicException.Throw<RC>()),
+			(O.A, O.B),
+			null
 		);
 	}
 }

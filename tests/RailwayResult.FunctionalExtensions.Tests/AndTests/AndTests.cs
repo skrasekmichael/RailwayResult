@@ -16,9 +16,9 @@ public sealed class AndTests : BaseTests
 
 	[Theory]
 	[ClassData(typeof(TheoryData_TaskOfR2_And))]
-	public async Task TaskOfR2_And(Func<Task<R2>, Task<R3>> and, R2 input, R3 expectedOutput) => await VerifyAsync(and, input, expectedOutput);
+	public async Task TaskOfR2_And(Func<Task<R2>, Task<R3>> and, R2 input, R3? expectedOutput) => await VerifyAsync(and, input, expectedOutput);
 
 	[Theory]
 	[ClassData(typeof(TheoryData_R1_AndAsync))]
-	public async Task R1_AndAsync(Func<R1, Task<R2>> andAsync, R1 input, R2 expectedOutput) => await VerifyAsync(andAsync, input, expectedOutput);
+	public async Task R1_AndAsync(Func<R1, Task<R2>> andAsync, R1 input, R2? expectedOutput) => await VerifyAsync(andAsync, input, expectedOutput);
 }
