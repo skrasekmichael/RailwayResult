@@ -56,6 +56,20 @@ public abstract class BaseTests
 		}
 	}
 
+	protected static async Task VerifyAsync<T>(Func<Result<T>, Task<Result>> asyncMethod, Result<T> input, Result? expectedOutput)
+	{
+		if (expectedOutput is null)
+		{
+			var accessor = async () => await asyncMethod.Invoke(input);
+			await accessor.Should().ThrowExactlyAsync<BasicException>();
+		}
+		else
+		{
+			var result = await asyncMethod.Invoke(input);
+			result.ShouldBe(expectedOutput);
+		}
+	}
+
 	protected static async Task VerifyAsync<T1, T2>(Func<Result<T1>, Task<Result<T2>>> asyncMethod, Result<T1> input, Result<T2>? expectedOutput)
 	{
 		if (expectedOutput is null)

@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.ThenAsyncTests;
 
-public sealed class TheoryData_R1_ThenAsync_TaskOfRC : TheoryData<Func<R1, Task<RC>>, R1, RC>
+public sealed class TheoryData_R1_ThenAsync_TaskOfRC : TheoryData<Func<R1, Task<RC>>, R1, RC?>
 {
 	public TheoryData_R1_ThenAsync_TaskOfRC()
 	{
@@ -58,6 +58,34 @@ public sealed class TheoryData_R1_ThenAsync_TaskOfRC : TheoryData<Func<R1, Task<
 			Errors.ErrorA
 		);
 
+		//then should return input failure result
+		Add(
+			result => result.ThenAsync(_ => BasicException.Throw<Task<string?>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ThenAsync(_ => BasicException.Throw< Task<string?>>()),
+			O.A,
+			null
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.ThenAsync(_ => BasicException.Throw<Task<RC>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ThenAsync(_ => BasicException.Throw<Task<RC>>()),
+			O.A,
+			null
+		);
+
 		// --- TaskOfR1 ThenAsync TaskOfRC ---
 
 		Add(
@@ -110,6 +138,34 @@ public sealed class TheoryData_R1_ThenAsync_TaskOfRC : TheoryData<Func<R1, Task<
 			result => result.ToResultTask().ThenAsync(_ => Errors.ErrorB.ToResultTask<string?, BasicError>()),
 			Errors.ErrorA,
 			Errors.ErrorA
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.ToResultTask().ThenAsync(_ => BasicException.Throw<Task<string?>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ToResultTask().ThenAsync(_ => BasicException.Throw<Task<string?>>()),
+			O.A,
+			null
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.ToResultTask().ThenAsync(_ => BasicException.Throw<Task<RC>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ToResultTask().ThenAsync(_ => BasicException.Throw<Task<RC>>()),
+			O.A,
+			null
 		);
 	}
 }

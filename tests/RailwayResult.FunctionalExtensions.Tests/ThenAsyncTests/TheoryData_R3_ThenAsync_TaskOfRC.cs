@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.ThenAsyncTests;
 
-public sealed class TheoryData_R3_ThenAsync_TaskOfRC : TheoryData<Func<R3, Task<RC>>, R3, RC>
+public sealed class TheoryData_R3_ThenAsync_TaskOfRC : TheoryData<Func<R3, Task<RC>>, R3, RC?>
 {
 	public TheoryData_R3_ThenAsync_TaskOfRC()
 	{
@@ -58,6 +58,34 @@ public sealed class TheoryData_R3_ThenAsync_TaskOfRC : TheoryData<Func<R3, Task<
 			Errors.ErrorA
 		);
 
+		//then should return input failure result
+		Add(
+			result => result.ThenAsync((_, _, _) => BasicException.Throw<Task<string?>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ThenAsync((_, _, _) => BasicException.Throw<Task<string?>>()),
+			(O.A, O.B, O.C),
+			null
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.ThenAsync((_, _, _) => BasicException.Throw<Task<RC>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ThenAsync((_, _, _) => BasicException.Throw<Task<RC>>()),
+			(O.A, O.B, O.C),
+			null
+		);
+
 		// --- TaskOfR3 ThenAsync TaskOfRC ---
 
 		Add(
@@ -110,6 +138,34 @@ public sealed class TheoryData_R3_ThenAsync_TaskOfRC : TheoryData<Func<R3, Task<
 			result => result.ToResultTask().ThenAsync((_, _, _) => Errors.ErrorB.ToResultTask<string?, BasicError>()),
 			Errors.ErrorA,
 			Errors.ErrorA
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.ToResultTask().ThenAsync((_, _, _) => BasicException.Throw<Task<string?>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ToResultTask().ThenAsync((_, _, _) => BasicException.Throw<Task<string?>>()),
+			(O.A, O.B, O.C),
+			null
+		);
+
+		//then should return input failure result
+		Add(
+			result => result.ToResultTask().ThenAsync((_, _, _) => BasicException.Throw<Task<RC>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//then should propagate exception
+		Add(
+			result => result.ToResultTask().ThenAsync((_, _, _) => BasicException.Throw<Task<RC>>()),
+			(O.A, O.B, O.C),
+			null
 		);
 	}
 }
