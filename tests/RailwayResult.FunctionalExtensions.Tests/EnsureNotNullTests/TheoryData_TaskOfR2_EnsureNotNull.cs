@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.EnsureTests;
 
-public sealed class TheoryData_TaskOfR2_EnsureNotNull : TheoryData<Func<Task<R2N>, Task<R2>>, R2N, R2>
+public sealed class TheoryData_TaskOfR2_EnsureNotNull : TheoryData<Func<Task<R2N>, Task<R2>>, R2N, R2?>
 {
 	public TheoryData_TaskOfR2_EnsureNotNull()
 	{
@@ -63,6 +63,20 @@ public sealed class TheoryData_TaskOfR2_EnsureNotNull : TheoryData<Func<Task<R2N
 		//ensure should return input failure result
 		Add(
 			result => result.EnsureSecondNotNull(Errors.ErrorA)!,
+			Errors.ErrorD,
+			Errors.ErrorD
+		);
+
+		//ensure should propagate exception
+		Add(
+			result => result.EnsureNotNull((_, _) => BasicException.Throw<string>(), Errors.ErrorA)!,
+			(null, null),
+			null
+		);
+
+		//ensure should return input fail result
+		Add(
+			result => result.EnsureNotNull((_, _) => BasicException.Throw<string>(), Errors.ErrorA)!,
 			Errors.ErrorD,
 			Errors.ErrorD
 		);

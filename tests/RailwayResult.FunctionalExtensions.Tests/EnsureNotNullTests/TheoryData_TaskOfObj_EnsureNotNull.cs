@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.EnsureTests;
 
-public sealed class TheoryData_TaskOfObj_EnsureNotNull : TheoryData<Func<Task<O?>, Task<R1>>, O?, R1>
+public sealed class TheoryData_TaskOfObj_EnsureNotNull : TheoryData<Func<Task<O?>, Task<R1>>, O?, R1?>
 {
 	public TheoryData_TaskOfObj_EnsureNotNull()
 	{
