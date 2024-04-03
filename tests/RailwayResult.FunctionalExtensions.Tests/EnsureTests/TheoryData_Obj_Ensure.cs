@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.EnsureTests;
 
-public sealed class TheoryData_Obj_Ensure : TheoryData<Func<O, R1>, O, R1>
+public sealed class TheoryData_Obj_Ensure : TheoryData<Func<O, R1>, O, R1?>
 {
 	public TheoryData_Obj_Ensure()
 	{
@@ -30,6 +30,20 @@ public sealed class TheoryData_Obj_Ensure : TheoryData<Func<O, R1>, O, R1>
 			result => result.Ensure(Rules.IsEmpty, Rules.IsNullOrWhiteSpace, Rules.CountIs(1)),
 			O.Empty,
 			Rules.CountIs(1).Error
+		);
+
+		//ensure should propagate exception
+		Add(
+			result => result.Ensure(Rules.RuleException, Errors.ErrorA),
+			O.Empty,
+			null
+		);
+
+		//ensure should propagate exception
+		Add(
+			result => result.Ensure(Rules.IsEmpty, Rules.ORuleWithErrorException),
+			O.Empty,
+			null
 		);
 	}
 }

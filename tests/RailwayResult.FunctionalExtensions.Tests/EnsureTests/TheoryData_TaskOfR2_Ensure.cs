@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.EnsureTests;
 
-public sealed class TheoryData_TaskOfR2_Ensure : TheoryData<Func<Task<R2>, Task<R2>>, R2, R2>
+public sealed class TheoryData_TaskOfR2_Ensure : TheoryData<Func<Task<R2>, Task<R2>>, R2, R2?>
 {
 	public TheoryData_TaskOfR2_Ensure()
 	{
@@ -44,6 +44,34 @@ public sealed class TheoryData_TaskOfR2_Ensure : TheoryData<Func<Task<R2>, Task<
 			result => result.Ensure(Rules.CountIs(0, 1)),
 			Errors.ErrorD,
 			Errors.ErrorD
+		);
+
+		//ensure should return input failure result before any rule check
+		Add(
+			result => result.Ensure((_, _) => BasicException.Throw<bool>(), Errors.ErrorA),
+			Errors.ErrorD,
+			Errors.ErrorD
+		);
+
+		//ensure should propagate exception
+		Add(
+			result => result.Ensure((_, _) => BasicException.Throw<bool>(), Errors.ErrorA),
+			(O.Empty, O.Empty),
+			null
+		);
+
+		//ensure should return input failure result before any rule check
+		Add(
+			result => result.Ensure(Rules.OORuleWithErrorException),
+			Errors.ErrorD,
+			Errors.ErrorD
+		);
+
+		//ensure should propagate exception
+		Add(
+			result => result.Ensure(Rules.OORuleWithErrorException),
+			(O.Empty, O.Empty),
+			null
 		);
 	}
 }
