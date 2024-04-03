@@ -83,4 +83,22 @@ public static partial class ResultExtensions
 		var result = await resultTask;
 		return await result.AndAsync(asyncFunc);
 	}
+
+	public static async Task<Result<(TFirst, TSecond)>> AndAsync<TFirst, TSecond>(this Result<TFirst> result, Func<TFirst, Task<Result<TSecond>>> asyncFunc)
+	{
+		if (result.IsFailure)
+			return result.Error;
+
+		var nestedResult = await asyncFunc(result.Value);
+		if (nestedResult.IsFailure)
+			return nestedResult.Error;
+
+		return (result.Value, nestedResult.Value);
+	}
+
+	public static async Task<Result<(TFirst, TSecond)>> AndAsync<TFirst, TSecond>(this Task<Result<TFirst>> resultTask, Func<TFirst, Task<Result<TSecond>>> asyncFunc)
+	{
+		var result = await resultTask;
+		return await result.AndAsync(asyncFunc);
+	}
 }
