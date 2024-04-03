@@ -23,5 +23,4 @@ public sealed class Callback
 		WasCalled = true;
 		return Task.FromResult(error is null ? Result.Success : error);
 	}
-
 }

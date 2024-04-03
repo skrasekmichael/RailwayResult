@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.TapTests;
 
-public sealed class TheoryData_TaskOfR2_Tap : TheoryData<Func<Task<R2>, Callback, Task<R2>>, R2, R2, bool>
+public sealed class TheoryData_TaskOfR2_Tap : TheoryData<Func<Task<R2>, Callback, Task<R2>>, R2, R2?, bool>
 {
 	public TheoryData_TaskOfR2_Tap()
 	{
@@ -49,6 +49,22 @@ public sealed class TheoryData_TaskOfR2_Tap : TheoryData<Func<Task<R2>, Callback
 			(result, callback) => result.Tap(_ => callback.ResultInvoke(Errors.ErrorD)),
 			Errors.ErrorA,
 			Errors.ErrorA,
+			false
+		);
+
+		//tap should propagate exception and callback should not be invoked
+		Add(
+			(result, _) => result.Tap((_, _) => BasicException.Throw()),
+			(O.A, O.B),
+			null,
+			false
+		);
+
+		//tap should propagate exception and callback should not be invoked
+		Add(
+			(result, _) => result.Tap((_, _) => BasicException.Throw<Result>()),
+			(O.A, O.B),
+			null,
 			false
 		);
 	}
