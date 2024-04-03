@@ -1,6 +1,6 @@
 ﻿namespace RailwayResult.FunctionalExtensions.Tests.AndTests;
 
-public sealed class TheoryData_R1_AndAsync : TheoryData<Func<R1, Task<R2>>, R1, R2>
+public sealed class TheoryData_R1_AndAsync : TheoryData<Func<R1, Task<R2>>, R1, R2?>
 {
 	public TheoryData_R1_AndAsync()
 	{
@@ -46,6 +46,34 @@ public sealed class TheoryData_R1_AndAsync : TheoryData<Func<R1, Task<R2>>, R1, 
 			Errors.ErrorA
 		);
 
+		//and should return input failure result
+		Add(
+			result => result.AndAsync(_ => BasicException.Throw<Task<O>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//and should propagate exception
+		Add(
+			result => result.AndAsync(_ => BasicException.Throw<Task<O>>()),
+			O.A,
+			null
+		);
+
+		//and should return input failure result
+		Add(
+			result => result.AndAsync(_ => BasicException.Throw<Task<R1>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//and should propagate exception
+		Add(
+			result => result.AndAsync(_ => BasicException.Throw<Task<R1>>()),
+			O.A,
+			null
+		);
+
 		// --- TaskOfR1 ---
 
 		Add(
@@ -86,6 +114,34 @@ public sealed class TheoryData_R1_AndAsync : TheoryData<Func<R1, Task<R2>>, R1, 
 			result => result.ToResultTask().AndAsync(_ => Task.FromResult<R1>(Errors.ErrorD)),
 			Errors.ErrorA,
 			Errors.ErrorA
+		);
+
+		//and should return input failure result
+		Add(
+			result => result.ToResultTask().AndAsync(_ => BasicException.Throw<Task<O>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//and should propagate exception
+		Add(
+			result => result.ToResultTask().AndAsync(_ => BasicException.Throw<Task<O>>()),
+			O.A,
+			null
+		);
+
+		//and should return input failure result
+		Add(
+			result => result.ToResultTask().AndAsync(_ => BasicException.Throw<Task<R1>>()),
+			Errors.ErrorA,
+			Errors.ErrorA
+		);
+
+		//and should propagate exception
+		Add(
+			result => result.ToResultTask().AndAsync(_ => BasicException.Throw<Task<R1>>()),
+			O.A,
+			null
 		);
 	}
 }
