@@ -2,7 +2,7 @@
 
 namespace RailwayResult;
 
-public sealed class Result
+public sealed class Result : IResult
 {
 	public bool IsSuccess { get; }
 	public bool IsFailure => !IsSuccess;
