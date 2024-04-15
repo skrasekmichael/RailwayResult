@@ -88,6 +88,6 @@ public TeamMember? GetTeamMember(Guid memberId)
 }
 ```
 
-*Note: using railway-oriented programming results in cleaner and shorter code, however, it also brings additional overhead and inability to return early from function, thus making it less performant (see [benchmarks](benchmarks/v1.0.2.StatementBenchmark.md)).*
+*Note: using railway-oriented programming results in cleaner and shorter code, however, it also brings additional overhead and inability to return early from function, thus making it less performant (see [benchmarks](benchmarks/v1.0.3.StatementBenchmark.md)).*
 
 *Learn more about [when to not use railway-oriented programming](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/).*
