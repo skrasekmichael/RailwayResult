@@ -88,7 +88,7 @@ public class StatementBenchmark
 	}
 
 	[Benchmark]
-	public async Task<int> FailLateEarly_Exception()
+	public async Task<int> FailEarlyAsync_Exception()
 	{
 		try
 		{
