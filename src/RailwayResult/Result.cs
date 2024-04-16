@@ -5,14 +5,16 @@ namespace RailwayResult;
 public sealed class Result : IResult
 {
 	public bool IsSuccess { get; }
+
 	public bool IsFailure => !IsSuccess;
 
 	private readonly Error? _error = null;
+
 	public Error Error => IsFailure ? _error! : throw new AccessingErrorOfSuccessResultException();
 
 	public Result(Error error)
 	{
-		IsSuccess = false;
+		IsSuccess = error is null;
 		_error = error;
 	}
 
@@ -35,6 +37,8 @@ public sealed class Result : IResult
 			false => "Result FAILURE " + _error!.ToString()
 		};
 	}
+
+	public static IResult FromError<TError>(TError error) where TError : Error => new Result(error);
 
 	public static readonly Result Success = new();
 

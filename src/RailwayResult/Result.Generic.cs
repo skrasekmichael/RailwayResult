@@ -4,25 +4,26 @@ namespace RailwayResult;
 
 public sealed class Result<TValue> : IResult<TValue>
 {
-	public bool IsSuccess { get; }
+	public bool IsSuccess => _error is null;
+
 	public bool IsFailure => !IsSuccess;
 
 	private readonly TValue? _value;
+
 	public TValue Value => IsSuccess ? _value! : throw new AccessingValueOfFailureResultException();
 
 	private readonly Error? _error = null;
+
 	public Error Error => IsFailure ? _error! : throw new AccessingErrorOfSuccessResultException();
 
-	private Result(Error error)
+	public Result(Error error)
 	{
-		IsSuccess = false;
 		_error = error;
 		_value = default;
 	}
 
 	private Result(TValue? value)
 	{
-		IsSuccess = true;
 		_error = null;
 		_value = value;
 	}
@@ -42,6 +43,9 @@ public sealed class Result<TValue> : IResult<TValue>
 	}
 
 	public static Result<TValue> Success(TValue value) => new(value);
+
+	public static IResult<TValue> FromValue(TValue value) => new Result<TValue>(value);
+	public static IResult FromError<TError>(TError error) where TError : Error => new Result<TValue>(error);
 
 	public static implicit operator Result<TValue>(TValue? value) => new(value);
 	public static implicit operator Result<TValue>(Error error) => new(error);
