@@ -19,7 +19,7 @@ public sealed class Result_AccessingValueAndError_Tests
 	public void AccessingErrorOfFailureResult_Should_NotResultInException()
 	{
 		//arrange
-		var expectedError = new GenericError("Tests.Error", "Error");
+		var expectedError = new BasicError("Tests.Error", "Error");
 		Result failedResult = expectedError;
 
 		//act
@@ -46,7 +46,7 @@ public sealed class Result_AccessingValueAndError_Tests
 	public void AccessingErrorOfGenericFailureResult_Should_NotResultInException()
 	{
 		//arrange
-		var expectedError = new GenericError("Tests.Error", "Error");
+		var expectedError = new BasicError("Tests.Error", "Error");
 		Result<string> failedResult = expectedError;
 
 		//act
@@ -60,7 +60,7 @@ public sealed class Result_AccessingValueAndError_Tests
 	public void AccessingValueOfFailureGenericResult_Should_ResultInException()
 	{
 		//arrange
-		Result<string> failedResult = new GenericError("Tests.Error", "Error");
+		Result<string> failedResult = new BasicError("Tests.Error", "Error");
 
 		//act
 		var accessor = () => failedResult.Value;

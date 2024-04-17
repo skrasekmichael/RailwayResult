@@ -6,7 +6,7 @@ public sealed class Result_Match_Tests
 	public void Match_OnFailureResult_Should_ReturnOnFailureMapping()
 	{
 		//arrange
-		Result result = GenericError.ErrorA;
+		Result result = BasicError.ErrorA;
 
 		//act
 		var mappedValue = result.Match(() => 0, _ => 1);
@@ -32,7 +32,7 @@ public sealed class Result_Match_Tests
 	public void Match_OnGenericFailureResult_Should_ReturnOnFailureMapping()
 	{
 		//arrange
-		Result<string> result = GenericError.ErrorA;
+		Result<string> result = BasicError.ErrorA;
 
 		//act
 		var mappedValue = result.Match(_ => 0, _ => 1);
