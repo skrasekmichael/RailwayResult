@@ -1,7 +1,11 @@
-﻿using RailwayResult.Exceptions;
+﻿using System.Text.Json.Serialization;
+
+using RailwayResult.Exceptions;
+using RailwayResult.JsonConverters;
 
 namespace RailwayResult;
 
+[JsonConverter(typeof(ResultJsonConverter))]
 public sealed class Result : IResult
 {
 	public bool IsSuccess { get; }
@@ -14,7 +18,7 @@ public sealed class Result : IResult
 
 	public Result(Error error)
 	{
-		IsSuccess = error is null;
+		IsSuccess = false;
 		_error = error;
 	}
 
