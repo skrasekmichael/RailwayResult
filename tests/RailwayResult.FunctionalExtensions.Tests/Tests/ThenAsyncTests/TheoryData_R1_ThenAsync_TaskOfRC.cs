@@ -7,8 +7,12 @@ public sealed class TheoryData_R1_ThenAsync_TaskOfRC : TheoryData<Func<R1, Task<
 {
 	public TheoryData_R1_ThenAsync_TaskOfRC()
 	{
-		// --- R1 ThenAsync TaskOfRC ---
+		AddData_R1_ThenAsync_TaskOfRC();
+		AddData_TaskOfR1_ThenAsync_TaskOfRC();
+	}
 
+	private void AddData_R1_ThenAsync_TaskOfRC()
+	{
 		Add(
 			result => result.ThenAsync(o => Task.FromResult(o.Value)),
 			O.A,
@@ -88,9 +92,10 @@ public sealed class TheoryData_R1_ThenAsync_TaskOfRC : TheoryData<Func<R1, Task<
 			O.A,
 			null
 		);
+	}
 
-		// --- TaskOfR1 ThenAsync TaskOfRC ---
-
+	private void AddData_TaskOfR1_ThenAsync_TaskOfRC()
+	{
 		Add(
 			result => result.ToResultTask().ThenAsync(o => Task.FromResult(o.Value)),
 			O.A,
