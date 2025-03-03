@@ -1,4 +1,4 @@
-﻿namespace RailwayResults.Tests.Mocks;
+﻿namespace RailwayResult.Tests.Mocks;
 
 public record BasicError(string Key, string Message) : Error(Key, Message)
 {

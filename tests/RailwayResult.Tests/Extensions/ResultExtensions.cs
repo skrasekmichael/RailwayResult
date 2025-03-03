@@ -2,30 +2,30 @@
 
 public static class ResultExtensions
 {
-	public static void ShouldBe(this Result self, Result expected)
+	public static void ShouldBeEquivalentToResult(this Result self, Result expected)
 	{
 		if (self!.IsSuccess)
 		{
-			expected.IsSuccess.Should().BeTrue();
+			expected.IsSuccess.ShouldBeTrue();
 		}
 		else
 		{
-			expected.IsSuccess.Should().BeFalse();
-			self.Error.Should().BeEquivalentTo(expected.Error);
+			expected.IsSuccess.ShouldBeFalse();
+			self.Error.ShouldBeEquivalentTo(expected.Error);
 		}
 	}
 
-	public static void ShouldBe<T>(this Result<T> self, Result<T> expected)
+	public static void ShouldBeEquivalentToResult<T>(this Result<T> self, Result<T> expected)
 	{
 		if (self.IsSuccess)
 		{
-			expected.IsSuccess.Should().BeTrue();
-			self.Value.Should().BeEquivalentTo(expected.Value);
+			expected.IsSuccess.ShouldBeTrue();
+			self.Value.ShouldBeEquivalentTo(expected.Value);
 		}
 		else
 		{
-			expected.IsSuccess.Should().BeFalse();
-			self.Error.Should().BeEquivalentTo(expected.Error);
+			expected.IsSuccess.ShouldBeFalse();
+			self.Error.ShouldBeEquivalentTo(expected.Error);
 		}
 	}
 }

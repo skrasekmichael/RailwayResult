@@ -1,6 +1,6 @@
-﻿using static RailwayResults.Tests.Mocks.ComplexType;
+﻿using static RailwayResult.Tests.Mocks.ComplexType;
 
-namespace RailwayResults.Tests.Mocks;
+namespace RailwayResult.Tests.Mocks;
 
 public sealed record ComplexType(
 	string Data,

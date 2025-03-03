@@ -18,35 +18,35 @@ public sealed class ResultDeserialization_Tests
 		var result = JsonSerializer.Deserialize<Result>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
 	public void SerializedFailureResult_Should_BeDeserializedAsSameResult()
 	{
 		//arrange
-		var json = """{"Type":"RailwayResult.Tests/RailwayResults.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
+		var json = """{"Type":"RailwayResult.Tests/RailwayResult.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
 		var expectedResult = new Result(BasicError.ErrorA);
 
 		//act
 		var result = JsonSerializer.Deserialize<Result>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
 	public void SerializedFailureResult_WithComplexError_Should_BeDeserializedAsSameResult()
 	{
 		//arrange
-		var json = """{"Type":"RailwayResult.Tests/RailwayResults.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
+		var json = """{"Type":"RailwayResult.Tests/RailwayResult.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
 		var expectedResult = new Result(ComplexError.One);
 
 		//act
 		var result = JsonSerializer.Deserialize<Result>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
@@ -60,7 +60,7 @@ public sealed class ResultDeserialization_Tests
 		var result = JsonSerializer.Deserialize<Result<string>>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
@@ -74,35 +74,35 @@ public sealed class ResultDeserialization_Tests
 		var result = JsonSerializer.Deserialize<Result<ComplexType>>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
 	public void SerializedGenericFailureResult_Should_BeDeserializedAsSameResult()
 	{
 		//arrange
-		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResults.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
+		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
 		Result<string> expectedResult = BasicError.ErrorA;
 
 		//act
 		var result = JsonSerializer.Deserialize<Result<string>>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
 	public void SerializedGenericFailureResult_WithComplexError_Should_BeDeserializedAsSameResult()
 	{
 		//arrange
-		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResults.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
+		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
 		Result<string> expectedResult = ComplexError.One;
 
 		//act
 		var result = JsonSerializer.Deserialize<Result<string>>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 
 	[Fact]
@@ -116,6 +116,6 @@ public sealed class ResultDeserialization_Tests
 		var result = JsonSerializer.Deserialize<Result<string>>(json);
 
 		//assert
-		result!.ShouldBe(expectedResult);
+		result!.ShouldBeEquivalentToResult(expectedResult);
 	}
 }

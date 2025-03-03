@@ -12,14 +12,14 @@ public abstract class BaseTapTests
 		if (expectedOutput is null)
 		{
 			var accessor = () => method.Invoke(input, Callback);
-			accessor.Should().ThrowExactly<BasicException>();
+			accessor.ShouldThrow<BasicException>();
 		}
 		else
 		{
 			method.Invoke(input, Callback).ShouldBe(expectedOutput);
 		}
 
-		Callback.WasCalled.Should().Be(wasCallbackInvoked);
+		Callback.WasCalled.ShouldBe(wasCallbackInvoked);
 	}
 
 	protected void Verify<T1, T2>(Func<Result<T1>, Callback, Result<T2>> method, Result<T1> input, Result<T2>? expectedOutput, bool wasCallbackInvoked)
@@ -27,14 +27,14 @@ public abstract class BaseTapTests
 		if (expectedOutput is null)
 		{
 			var accessor = () => method.Invoke(input, Callback);
-			accessor.Should().ThrowExactly<BasicException>();
+			accessor.ShouldThrow<BasicException>();
 		}
 		else
 		{
 			method.Invoke(input, Callback).ShouldBe(expectedOutput);
 		}
 
-		Callback.WasCalled.Should().Be(wasCallbackInvoked);
+		Callback.WasCalled.ShouldBe(wasCallbackInvoked);
 	}
 
 	protected async Task VerifyAsync(Func<Result, Callback, Task<Result>> asyncMethod, Result input, Result? expectedOutput, bool wasCallbackInvoked)
@@ -42,7 +42,7 @@ public abstract class BaseTapTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(input, Callback);
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -50,7 +50,7 @@ public abstract class BaseTapTests
 			result.ShouldBe(expectedOutput);
 		}
 
-		Callback.WasCalled.Should().Be(wasCallbackInvoked);
+		Callback.WasCalled.ShouldBe(wasCallbackInvoked);
 	}
 
 	protected async Task VerifyAsync(Func<Task<Result>, Callback, Task<Result>> asyncMethod, Result input, Result? expectedOutput, bool wasCallbackInvoked)
@@ -58,7 +58,7 @@ public abstract class BaseTapTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(Task.FromResult(input), Callback);
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -66,7 +66,7 @@ public abstract class BaseTapTests
 			result.ShouldBe(expectedOutput);
 		}
 
-		Callback.WasCalled.Should().Be(wasCallbackInvoked);
+		Callback.WasCalled.ShouldBe(wasCallbackInvoked);
 	}
 
 	protected async Task VerifyAsync<T1, T2>(Func<Task<Result<T1>>, Callback, Task<Result<T2>>> asyncMethod, Result<T1> input, Result<T2>? expectedOutput, bool wasCallbackInvoked)
@@ -74,7 +74,7 @@ public abstract class BaseTapTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(Task.FromResult(input), Callback);
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -82,7 +82,7 @@ public abstract class BaseTapTests
 			result.ShouldBe(expectedOutput);
 		}
 
-		Callback.WasCalled.Should().Be(wasCallbackInvoked);
+		Callback.WasCalled.ShouldBe(wasCallbackInvoked);
 	}
 
 	protected async Task VerifyAsync<T1, T2>(Func<Result<T1>, Callback, Task<Result<T2>>> asyncMethod, Result<T1> input, Result<T2>? expectedOutput, bool wasCallbackInvoked)
@@ -90,7 +90,7 @@ public abstract class BaseTapTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(input, Callback);
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -98,6 +98,6 @@ public abstract class BaseTapTests
 			result.ShouldBe(expectedOutput);
 		}
 
-		Callback.WasCalled.Should().Be(wasCallbackInvoked);
+		Callback.WasCalled.ShouldBe(wasCallbackInvoked);
 	}
 }
