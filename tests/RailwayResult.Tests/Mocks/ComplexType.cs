@@ -1,4 +1,4 @@
-﻿using static RailwayResults.Tests.Mocks.ComplexError;
+﻿using static RailwayResults.Tests.Mocks.ComplexType;
 
 namespace RailwayResults.Tests.Mocks;
 

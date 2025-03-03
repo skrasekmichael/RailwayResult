@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 
 using RailwayResult.Tests.Extensions;
+using RailwayResult.Tests.Mocks;
 
 namespace RailwayResult.Tests;
 
@@ -66,7 +67,7 @@ public sealed class ResultDeserialization_Tests
 	public void SerializedGenericSuccessResult_WithComplexValue_Should_BeDeserializedAsSameResult()
 	{
 		//arrange
-		var json = """{"Value":{"Data":"Data","Int":0,"Record":{"A":1,"B":"A"},"Records":[{"A":2,"B":"B"},{"A":3,"B":"C"}]}}""";
+		var json = """{"Value":{"Data":"Data","Int":0,"Record":{"Index":1,"Letter":"A"},"Records":[{"Index":2,"Letter":"B"},{"Index":3,"Letter":"C"}]}}""";
 		Result<ComplexType> expectedResult = ComplexType.Data1A2B3C;
 
 		//act
@@ -96,6 +97,20 @@ public sealed class ResultDeserialization_Tests
 		//arrange
 		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResults.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
 		Result<string> expectedResult = ComplexError.One;
+
+		//act
+		var result = JsonSerializer.Deserialize<Result<string>>(json);
+
+		//assert
+		result!.ShouldBe(expectedResult);
+	}
+
+	[Fact]
+	public void SerializedGenericFailureResult_WithGenericError_Should_BeDeserializedAsSameResult()
+	{
+		//arrange
+		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.GenericError\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]","Error":{"Data":100,"Key":"A","Message":"Error A"}}""";
+		Result<string> expectedResult = GenericError<int>.GenericErrorA;
 
 		//act
 		var result = JsonSerializer.Deserialize<Result<string>>(json);
