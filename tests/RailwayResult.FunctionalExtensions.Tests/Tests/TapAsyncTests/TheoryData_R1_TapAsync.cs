@@ -7,8 +7,12 @@ public sealed class TheoryData_R1_TapAsync : TheoryData<Func<R1, Callback, Task<
 {
 	public TheoryData_R1_TapAsync()
 	{
-		// --- R1 ThenAsync ---
+		AddData_R1_ThenAsync();
+		AddData_TaskOfR1_ThenAsync();
+	}
 
+	private void AddData_R1_ThenAsync()
+	{
 		//callback should be invoked and result stays on success railway
 		Add(
 			(result, callback) => result.TapAsync(_ => callback.InvokeAsync()),
@@ -72,9 +76,10 @@ public sealed class TheoryData_R1_TapAsync : TheoryData<Func<R1, Callback, Task<
 			null,
 			false
 		);
+	}
 
-		// --- TaskOfR1 ThenAsync ---
-
+	private void AddData_TaskOfR1_ThenAsync()
+	{
 		//callback should be invoked and result stays on success railway
 		Add(
 			(result, callback) => result.ToResultTask().TapAsync(_ => callback.InvokeAsync()),
@@ -139,4 +144,5 @@ public sealed class TheoryData_R1_TapAsync : TheoryData<Func<R1, Callback, Task<
 			false
 		);
 	}
+
 }

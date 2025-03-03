@@ -7,8 +7,12 @@ public sealed class TheoryData_R1_AndAsync : TheoryData<Func<R1, Task<R2>>, R1, 
 {
 	public TheoryData_R1_AndAsync()
 	{
-		// --- R1 ---
+		AddData_R1();
+		AddData_TaskOfR1();
+	}
 
+	private void AddData_R1()
+	{
 		Add(
 			result => result.AndAsync(_ => Task.FromResult(O.B)),
 			O.A,
@@ -76,9 +80,10 @@ public sealed class TheoryData_R1_AndAsync : TheoryData<Func<R1, Task<R2>>, R1, 
 			O.A,
 			null
 		);
+	}
 
-		// --- TaskOfR1 ---
-
+	private void AddData_TaskOfR1()
+	{
 		Add(
 			result => result.ToResultTask().AndAsync(_ => Task.FromResult(O.B)),
 			O.A,
