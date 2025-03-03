@@ -22,7 +22,7 @@ public sealed class ResultSerialization_Tests
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -30,13 +30,13 @@ public sealed class ResultSerialization_Tests
 	{
 		//arrange
 		var result = new Result(BasicError.ErrorA);
-		var expectedJson = """{"Type":"RailwayResult.Tests/RailwayResults.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
+		var expectedJson = """{"Type":"RailwayResult.Tests/RailwayResult.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
 
 		//act
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -44,13 +44,13 @@ public sealed class ResultSerialization_Tests
 	{
 		//arrange
 		var result = new Result(ComplexError.One);
-		var expectedJson = """{"Type":"RailwayResult.Tests/RailwayResults.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
+		var expectedJson = """{"Type":"RailwayResult.Tests/RailwayResult.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
 
 		//act
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -64,7 +64,7 @@ public sealed class ResultSerialization_Tests
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -78,7 +78,7 @@ public sealed class ResultSerialization_Tests
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -86,13 +86,13 @@ public sealed class ResultSerialization_Tests
 	{
 		//arrange
 		Result<string> result = BasicError.ErrorA;
-		var expectedJson = """{"ErrorType":"RailwayResult.Tests/RailwayResults.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
+		var expectedJson = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.BasicError","Error":{"Key":"Key","Message":"Error A"}}""";
 
 		//act
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -100,13 +100,13 @@ public sealed class ResultSerialization_Tests
 	{
 		//arrange
 		Result<string> result = ComplexError.One;
-		var expectedJson = """{"ErrorType":"RailwayResult.Tests/RailwayResults.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
+		var expectedJson = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.ComplexError","Error":{"AdditionalString":"one","AdditionalInt":1,"Record":{"A":2,"B":"two"},"Records":[{"A":3,"B":"three"},{"A":4,"B":"four"}],"Key":"key","Message":"msg"}}""";
 
 		//act
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 
 	[Fact]
@@ -120,6 +120,6 @@ public sealed class ResultSerialization_Tests
 		var json = JsonSerializer.Serialize(result);
 
 		//assert
-		json.Should().Be(expectedJson);
+		json.ShouldBe(expectedJson);
 	}
 }

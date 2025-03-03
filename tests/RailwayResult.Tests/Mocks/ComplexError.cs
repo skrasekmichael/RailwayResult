@@ -1,6 +1,6 @@
-﻿using static RailwayResults.Tests.Mocks.ComplexError;
+﻿using static RailwayResult.Tests.Mocks.ComplexError;
 
-namespace RailwayResults.Tests.Mocks;
+namespace RailwayResult.Tests.Mocks;
 
 public sealed record ComplexError(
 	string Key,

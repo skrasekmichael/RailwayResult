@@ -12,7 +12,7 @@ public sealed class Result_AccessingValueAndError_Tests
 		var accessor = () => result.Error;
 
 		//assert
-		accessor.Should().ThrowExactly<AccessingErrorOfSuccessResultException>();
+		accessor.ShouldThrow<AccessingErrorOfSuccessResultException>();
 	}
 
 	[Fact]
@@ -26,7 +26,7 @@ public sealed class Result_AccessingValueAndError_Tests
 		var error = failedResult.Error;
 
 		//assert
-		error.Should().Be(expectedError);
+		error.ShouldBe(expectedError);
 	}
 
 	[Fact]
@@ -39,7 +39,7 @@ public sealed class Result_AccessingValueAndError_Tests
 		var accessor = () => result.Error;
 
 		//assert
-		accessor.Should().ThrowExactly<AccessingErrorOfSuccessResultException>();
+		accessor.ShouldThrow<AccessingErrorOfSuccessResultException>();
 	}
 
 	[Fact]
@@ -53,7 +53,7 @@ public sealed class Result_AccessingValueAndError_Tests
 		var error = failedResult.Error;
 
 		//assert
-		error.Should().Be(expectedError);
+		error.ShouldBe(expectedError);
 	}
 
 	[Fact]
@@ -66,7 +66,7 @@ public sealed class Result_AccessingValueAndError_Tests
 		var accessor = () => failedResult.Value;
 
 		//assert
-		accessor.Should().ThrowExactly<AccessingValueOfFailureResultException>();
+		accessor.ShouldThrow<AccessingValueOfFailureResultException>();
 	}
 
 	[Fact]
@@ -79,6 +79,6 @@ public sealed class Result_AccessingValueAndError_Tests
 		var value = result.Value;
 
 		//assert
-		value.Should().Be("Success");
+		value.ShouldBe("Success");
 	}
 }

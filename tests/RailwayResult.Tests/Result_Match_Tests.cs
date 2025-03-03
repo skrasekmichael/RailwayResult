@@ -1,4 +1,6 @@
-﻿namespace RailwayResult.Tests;
+﻿using RailwayResult.Tests.Mocks;
+
+namespace RailwayResult.Tests;
 
 public sealed class Result_Match_Tests
 {
@@ -12,7 +14,7 @@ public sealed class Result_Match_Tests
 		var mappedValue = result.Match(() => 0, _ => 1);
 
 		//assert
-		mappedValue.Should().Be(1);
+		mappedValue.ShouldBe(1);
 	}
 
 	[Fact]
@@ -25,7 +27,7 @@ public sealed class Result_Match_Tests
 		var mappedValue = result.Match(() => 0, _ => 1);
 
 		//assert
-		mappedValue.Should().Be(0);
+		mappedValue.ShouldBe(0);
 	}
 
 	[Fact]
@@ -38,7 +40,7 @@ public sealed class Result_Match_Tests
 		var mappedValue = result.Match(_ => 0, _ => 1);
 
 		//assert
-		mappedValue.Should().Be(1);
+		mappedValue.ShouldBe(1);
 	}
 
 	[Fact]
@@ -51,6 +53,6 @@ public sealed class Result_Match_Tests
 		var mappedValue = result.Match(_ => 0, _ => 1);
 
 		//assert
-		mappedValue.Should().Be(0);
+		mappedValue.ShouldBe(0);
 	}
 }

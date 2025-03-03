@@ -10,7 +10,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = () => method.Invoke(input);
-			accessor.Should().ThrowExactly<BasicException>();
+			accessor.ShouldThrow<BasicException>();
 		}
 		else
 		{
@@ -23,7 +23,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = () => method.Invoke(input);
-			accessor.Should().ThrowExactly<BasicException>();
+			accessor.ShouldThrow<BasicException>();
 		}
 		else
 		{
@@ -36,7 +36,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = () => method.Invoke(input);
-			accessor.Should().ThrowExactly<BasicException>();
+			accessor.ShouldThrow<BasicException>();
 		}
 		else
 		{
@@ -49,7 +49,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(Task.FromResult(input));
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -63,7 +63,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(Task.FromResult(input));
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -77,7 +77,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(Task.FromResult(input));
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -91,7 +91,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(input);
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{
@@ -105,7 +105,7 @@ public abstract class BaseTests
 		if (expectedOutput is null)
 		{
 			var accessor = async () => await asyncMethod.Invoke(input);
-			await accessor.Should().ThrowExactlyAsync<BasicException>();
+			await accessor.ShouldThrowAsync<BasicException>();
 		}
 		else
 		{

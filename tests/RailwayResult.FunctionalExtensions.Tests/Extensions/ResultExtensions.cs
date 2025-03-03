@@ -6,12 +6,12 @@ public static class ResultExtensions
 	{
 		if (self.IsSuccess)
 		{
-			expected.IsSuccess.Should().BeTrue();
+			expected.IsSuccess.ShouldBeTrue();
 		}
 		else
 		{
-			expected.IsSuccess.Should().BeFalse();
-			self.Error.Should().BeEquivalentTo(expected.Error);
+			expected.IsSuccess.ShouldBeFalse();
+			self.Error.ShouldBeEquivalentTo(expected.Error);
 		}
 	}
 
@@ -19,13 +19,13 @@ public static class ResultExtensions
 	{
 		if (self.IsSuccess)
 		{
-			expected.IsSuccess.Should().BeTrue();
-			self.Value.Should().BeEquivalentTo(expected.Value);
+			expected.IsSuccess.ShouldBeTrue();
+			self.Value.ShouldBeEquivalentTo(expected.Value);
 		}
 		else
 		{
-			expected.IsSuccess.Should().BeFalse();
-			self.Error.Should().BeEquivalentTo(expected.Error);
+			expected.IsSuccess.ShouldBeFalse();
+			self.Error.ShouldBeEquivalentTo(expected.Error);
 		}
 	}
 

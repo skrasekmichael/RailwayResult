@@ -6,12 +6,12 @@ public static class ResultComparerExtensions
 	{
 		if (resultA.IsSuccess)
 		{
-			resultB.IsSuccess.Should().BeTrue();
+			resultB.IsSuccess.ShouldBeTrue();
 		}
 		else
 		{
-			resultB.IsSuccess.Should().BeFalse();
-			resultA.Error.Should().BeEquivalentTo(resultB.Error);
+			resultB.IsSuccess.ShouldBeFalse();
+			resultA.Error.ShouldBeEquivalentTo(resultB.Error);
 		}
 	}
 }

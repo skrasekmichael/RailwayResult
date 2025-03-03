@@ -1,8 +1,7 @@
-﻿global using FluentAssertions;
+﻿global using Shouldly;
 
 global using RailwayResult;
 global using RailwayResult.Exceptions;
-
-global using RailwayResults.Tests.Mocks;
+global using RailwayResult.Tests.Mocks;
 
 global using Xunit;

@@ -1,4 +1,6 @@
-﻿namespace RailwayResult.Tests;
+﻿using RailwayResult.Tests.Mocks;
+
+namespace RailwayResult.Tests;
 
 public sealed class ResultCreation_Tests
 {
@@ -12,8 +14,8 @@ public sealed class ResultCreation_Tests
 		var result = Result.FromError(BasicError.ErrorA);
 
 		//assert
-		result.IsSuccess.Should().Be(expectedResult.IsSuccess);
-		result.Error.Should().BeEquivalentTo(expectedResult.Error);
+		result.IsSuccess.ShouldBe(expectedResult.IsSuccess);
+		result.Error.ShouldBeEquivalentTo(expectedResult.Error);
 	}
 
 	[Fact]
@@ -26,8 +28,8 @@ public sealed class ResultCreation_Tests
 		var result = Result<string>.FromError(BasicError.ErrorA);
 
 		//assert
-		result.IsSuccess.Should().Be(expectedResult.IsSuccess);
-		result.Error.Should().BeEquivalentTo(expectedResult.Error);
+		result.IsSuccess.ShouldBe(expectedResult.IsSuccess);
+		result.Error.ShouldBeEquivalentTo(expectedResult.Error);
 	}
 
 	[Fact]
@@ -40,7 +42,7 @@ public sealed class ResultCreation_Tests
 		var result = Result<string>.FromValue("100");
 
 		//assert
-		result.IsSuccess.Should().Be(expectedResult.IsSuccess);
-		result.Value.Should().BeEquivalentTo(expectedResult.Value);
+		result.IsSuccess.ShouldBe(expectedResult.IsSuccess);
+		result.Value.ShouldBeEquivalentTo(expectedResult.Value);
 	}
 }
