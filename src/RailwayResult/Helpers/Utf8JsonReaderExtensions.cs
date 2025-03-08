@@ -63,7 +63,8 @@ internal static class Utf8JsonReaderExtensions
 		try
 		{
 			var assembly = Assembly.Load(typeDefinition.AssemblyName);
-			return assembly.GetType(typeDefinition.TypeName)!;
+			return assembly.GetType(typeDefinition.TypeName)
+				?? throw new JsonException($"Failed to load error type [{typeDefinitionString}].");
 		}
 		catch
 		{
@@ -75,6 +76,7 @@ internal static class Utf8JsonReaderExtensions
 	{
 		reader.Read();
 		var converter = Unsafe.As<JsonConverter<Error>>(options.GetConverter(valueType));
-		return converter.Read(ref reader, valueType, options)!;
+		return converter.Read(ref reader, valueType, options)
+			?? throw new JsonException($"Failed to deserialize error type [{valueType}].");
 	}
 }
