@@ -109,7 +109,7 @@ public sealed class ResultDeserialization_Tests
 	public void SerializedGenericFailureResult_WithGenericError_Should_BeDeserializedAsSameResult()
 	{
 		//arrange
-		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.GenericError\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]","Error":{"Data":100,"Key":"A","Message":"Error A"}}""";
+		var json = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.GenericError\u00601[[System.Int32, System.Private.CoreLib]]","Error":{"Data":100,"Key":"A","Message":"Error A"}}""";
 		Result<string> expectedResult = GenericError<int>.GenericErrorA;
 
 		//act

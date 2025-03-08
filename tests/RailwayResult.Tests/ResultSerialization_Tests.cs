@@ -1,11 +1,4 @@
 ﻿using System.Text.Json;
-using System.Text.RegularExpressions;
-
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-
-using RailwayResult.Tests.Mocks;
-
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RailwayResult.Tests;
 
@@ -114,7 +107,7 @@ public sealed class ResultSerialization_Tests
 	{
 		//arrange
 		Result<string> result = GenericError<int>.GenericErrorA;
-		var expectedJson = """{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.GenericError\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]","Error":{"Data":100,"Key":"A","Message":"Error A"}}""";
+		var expectedJson = $$$"""{"ErrorType":"RailwayResult.Tests/RailwayResult.Tests.Mocks.GenericError\u00601[[System.Int32, System.Private.CoreLib, Version={{{Environment.Version}}}.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]","Error":{"Data":100,"Key":"A","Message":"Error A"}}""";
 
 		//act
 		var json = JsonSerializer.Serialize(result);
