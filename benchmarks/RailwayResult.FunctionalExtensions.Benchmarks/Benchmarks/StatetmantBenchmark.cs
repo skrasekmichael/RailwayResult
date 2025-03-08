@@ -6,7 +6,7 @@ using RailwayResult.FunctionalExtensions.Benchmarks.Seeds;
 
 namespace RailwayResult.FunctionalExtensions.Benchmarks.Benchmarks;
 
-[SimpleJob(RuntimeMoniker.Net80)]
+[SimpleJob(RuntimeMoniker.Net90)]
 public class StatementBenchmark
 {
 	public Fraction Fraction { get; set; } = null!;
